@@ -148,10 +148,34 @@
         </div>
 
     </footer>
+    
     <audio autoplay loop>
-        <source src="audio/NewJeans (뉴진스) - Super Shy [Official Audio].mp3" type="audio/mpeg">
+        <source src="audio/NewJeans (뉴진스) - Super Shy [Official Audio].mp3" type="audio/mpeg" id="autoplay">
       Your browser does not support the audio element.
       </audio>
+    <script>
+            
+    window.onload = function() {
+        var music = new Audio("audio/NewJeans (뉴진스) - Super Shy [Official Audio].mp3");
+        music.play();
+    };
+        function checkAutoplay() {
+          var isAutoplayAllowed = true;
+          if ('autoplay' in document.createElement('audio')) {
+            // Autoplay is supported.
+            return isAutoplayAllowed;
+          } else {
+            // Autoplay is not supported, check browser settings.
+            if (typeof document.createElement('audio').autobuffer === 'boolean') {
+              isAutoplayAllowed = document.createElement('audio').autobuffer;
+            } else {
+              isAutoplayAllowed = false;
+            }
+            return isAutoplayAllowed;
+          }
+        }
+        </script>
+
 
     <script src="script.js"></script>
 </body>
